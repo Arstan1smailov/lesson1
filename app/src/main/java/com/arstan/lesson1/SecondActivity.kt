@@ -15,11 +15,9 @@ class SecondActivity : AppCompatActivity() {
     lateinit var button: Button
     lateinit var et: EditText
     lateinit var etText: String
+
     var resultLauncher = registerForActivityResult(ActivityResultContracts
-            .StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-            }
-        }
+            .StartActivityForResult()) { result -> }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +33,14 @@ class SecondActivity : AppCompatActivity() {
 
         button.setOnClickListener(View.OnClickListener {
             if (et.text.isEmpty()) {
+
                 Toast.makeText(this, "type text", Toast.LENGTH_LONG).show()
+
             } else {
+
                 intent.putExtra("key2", et.text.toString())
                 resultLauncher.launch(intent)
+                
             }
         })
     }

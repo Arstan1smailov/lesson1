@@ -18,10 +18,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var button : Button
     lateinit var et : EditText
     lateinit var etText : String
-    var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-        }
-    }
+
+    var resultLauncher = registerForActivityResult(ActivityResultContracts
+        .StartActivityForResult()) { result -> }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(this, SecondActivity::class.java)
 
-
-
         if (etText == "null"){
         }else{
             et.hint = etText
@@ -42,11 +39,14 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener(View.OnClickListener {
             if (et.text.isEmpty()){
+
                 Toast.makeText(this, "type text", Toast.LENGTH_LONG).show()
 
-            }else {
+            } else {
+
                 intent.putExtra("key1", et.text.toString())
                 resultLauncher.launch(intent)
+
             }
         })
 
