@@ -40,7 +40,7 @@ class SecondActivity : AppCompatActivity() {
 
                 intent.putExtra("key2", et.text.toString())
                 resultLauncher.launch(intent)
-                
+
             }
         })
     }

@@ -7,22 +7,23 @@
     tools:context=".SecondActivity">
     <EditText
         android:id="@+id/et_type"
-        android:hint="@string/текст"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@id/btn"
+        android:hint="@string/текст"
+        android:textAlignment="center"
+        android:textSize="32sp"
         android:importantForAutofill="no"
         android:inputType="text" />
     <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/btn"
         android:text="2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
