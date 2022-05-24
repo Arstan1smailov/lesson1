@@ -1,6 +1,5 @@
 package com.arstan.lesson1
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import com.arstan.lesson1.databinding.ActivityMainBinding
 
 class SecondActivity : AppCompatActivity() {
     lateinit var button: Button
