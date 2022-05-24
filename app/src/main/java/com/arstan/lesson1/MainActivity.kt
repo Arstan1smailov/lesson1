@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var etText : String
 
     var resultLauncher = registerForActivityResult(ActivityResultContracts
-        .StartActivityForResult()) { result -> }
+        .StartActivityForResult()) {result ->}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
