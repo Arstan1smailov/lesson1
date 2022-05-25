@@ -4,39 +4,41 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.arstan.lesson1.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
-    lateinit var button: Button
-    lateinit var et: EditText
+
     lateinit var etText: String
 
-    var resultLauncher = registerForActivityResult(ActivityResultContracts
-            .StartActivityForResult()) {result ->}
+
+    var resultLauncher = registerForActivityResult(
+        ActivityResultContracts
+            .StartActivityForResult()
+    ) { result -> }
+
+    companion object{
+        private const val KEY1_ = "key1"
+        private const val KEY2_ = "key2"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        val binding = ActivitySecondBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        et = findViewById(R.id.et_type)
-        button = findViewById(R.id.btn)
-        etText = intent.getStringExtra("key1").toString()
-
-        et.setHint(etText)
+        etText = intent.getStringExtra(KEY1_).toString()
+        binding.etType.hint = etText
 
         val intent = Intent(this, MainActivity::class.java)
 
-        button.setOnClickListener(View.OnClickListener {
-            if (et.text.isEmpty()) {
-
+        binding.btn.setOnClickListener(View.OnClickListener {
+            if (binding.etType.text.isEmpty()) {
                 Toast.makeText(this, "type text", Toast.LENGTH_LONG).show()
-
             } else {
 
-                intent.putExtra("key2", et.text.toString())
+                intent.putExtra(KEY2_, binding.etType.text.toString())
                 resultLauncher.launch(intent)
 
             }

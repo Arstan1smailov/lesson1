@@ -4,44 +4,43 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.arstan.lesson1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var button : Button
-    lateinit var et : EditText
-    lateinit var etText : String
+    lateinit var etText: String
 
-    var resultLauncher = registerForActivityResult(ActivityResultContracts
-        .StartActivityForResult()) {result ->}
+    var resultLauncher = registerForActivityResult(
+        ActivityResultContracts
+            .StartActivityForResult()
+    ) { result -> }
+
+    companion object{
+        private const val KEY1_ = "key1"
+        private const val KEY2_ = "key2"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        et = findViewById(R.id.et_type)
-        button = findViewById(R.id.btn)
-        etText = intent.getStringExtra("key2").toString()
+        etText = intent.getStringExtra(KEY2_).toString()
 
         val intent = Intent(this, SecondActivity::class.java)
 
-        if (etText == "null"){
-        }else{
-            et.hint = etText
+        if (etText != "null") {
+            binding.etType.hint = etText
         }
 
-        button.setOnClickListener(View.OnClickListener {
-            if (et.text.isEmpty()){
-
+        binding.btn.setOnClickListener(View.OnClickListener {
+            if (binding.etType.text.isEmpty()) {
                 Toast.makeText(this, "type text", Toast.LENGTH_LONG).show()
-
             } else {
 
-                intent.putExtra("key1", et.text.toString())
+                intent.putExtra(KEY1_, binding.etType.text.toString())
                 resultLauncher.launch(intent)
-
             }
         })
 
