@@ -35,7 +35,7 @@ class SecondActivity : AppCompatActivity() {
 
         binding.btn.setOnClickListener(View.OnClickListener {
             if (binding.etType.text.isEmpty()) {
-                Toast.makeText(this, "type text", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.type_text), Toast.LENGTH_LONG).show()
             } else {
 
                 intent.putExtra(KEY2_, binding.etType.text.toString())
